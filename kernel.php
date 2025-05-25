@@ -1,0 +1,1 @@
+'profile.completed' => \App\Http\Middleware\EnsureUserHasFilledProfile::class,
