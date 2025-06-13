@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VacsIn - Edukasi Vaksin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f6f8fb;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .logo span {
+      color: #00bcd4;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #000;
+    }
+    .register-btn {
+      border: 1px solid #00bcd4;
+      padding: 5px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: #00bcd4;
+    }
+    .container {
+      padding: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      margin-top: 8px;
+      color: #555;
+    }
+    .tag {
+      color: #00bcd4;
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    footer {
+      background-color: #121212;
+      color: #fff;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    footer div {
+      margin-bottom: 1rem;
+    }
+    footer h4 {
+      margin-bottom: 0.5rem;
+    }
+    footer a {
+      display: block;
+      color: #aaa;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .highlight {
+      color: #00bcd4;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span>V</span>acsin 🇮🇩</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Varian</a>
+    <a href="#">Edukasi</a>
+    <a href="#">Lokasi Vaksin</a>
+    <a href="#">Kontak</a>
+    <a href="#" class="register-btn">Registrasi</a>
+  </nav>
+</header>
+
+<div class="container">
+  <!-- Artikel utama -->
+  <div class="grid">
+    <div class="card">
+      <img src="vaccine1.jpg" alt="Vaksin 1">
+      <div class="card-content">
+        <h3>Perlukah Kita Mendapatkan Dosis Ketiga Vaksin COVID-19?</h3>
+        <p>Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh &gt; 37.5 C) atau memiliki tekanan darah diatas 140/90 mmhg</p>
+        <span class="tag">#Vaksin Booster | 5 April 2025</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-content">
+        <h3>Simak Jenis Dan Ketentuan Vaksin Booster</h3>
+        <p>Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh &gt; 37.5 C)</p>
+        <span class="tag">#Vaksin Booster | 5 April 2025</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="vaccine3.jpg" alt="Vaksin 3">
+      <div class="card-content">
+        <h3>Seberapa Pentingkah Vaksin COVID-19</h3>
+        <p>Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh &gt; 37.5 C)</p>
+        <span class="tag">#Edukasi | 5 April 2025</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="vaccine2.jpg" alt="Efek Samping Vaksin">
+      <div class="card-content">
+        <h3>Efek Samping Vaksin COVID-19</h3>
+        <p>Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh &gt; 37.5 C)</p>
+        <span class="tag">#Edukasi | 5 April 2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edukasi Populer -->
+  <h2 class="section-title" style="margin-top: 3rem;">Edukasi <span class="highlight">#Populer</span> Lainnya</h2>
+  <div class="grid">
+    <?php for($i = 0; $i < 8; $i++): ?>
+    <div class="card">
+      <img src="vaccine1.jpg" alt="Efek Samping Vaksin">
+      <div class="card-content">
+        <h3>Efek Samping Vaksin COVID-19</h3>
+        <p>Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh &gt; 37.5 C)</p>
+        <span class="tag">#Edukasi | 5 April 2025</span>
+      </div>
+    </div>
+    <?php endfor; ?>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="logo"><span>V</span>acsin 🇮🇩</div>
+    <p>VacsIn adalah platform edukasi vaksinasi</p>
+  </div>
+  <div>
+    <h4>Perusahaan</h4>
+    <a href="#">Tentang</a>
+    <a href="#">Kontak</a>
+  </div>
+  <div>
+    <h4>Layanan</h4>
+    <a href="#">Edukasi</a>
+    <a href="#">Varian</a>
+    <a href="#">Vaksin</a>
+  </div>
+  <div>
+    <h4>Kebijakan</h4>
+    <a href="#">Syarat & Ketentuan</a>
+    <a href="#">Kebijakan Privasi</a>
+    <a href="#">FAQ</a>
+  </div>
+</footer>
+
+</body>
+</html>
