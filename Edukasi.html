@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vacsin - Platform Edukasi Vaksinasi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,7 +12,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #ffffff;
@@ -28,7 +27,7 @@
         /* Header */
         header {
             background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -48,21 +47,20 @@
         }
 
         .logo {
-            height: 35px;
+            height: 40px;
             width: auto;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
@@ -71,30 +69,29 @@
         }
 
         .nav-links a.active {
-            color: #00C4FF;
+            color: #00b894;
             font-weight: 600;
         }
 
         .register-btn {
             background: transparent;
-            color: #00C4FF;
-            padding: 0.6rem 1.8rem;
-            border: 2px solid #00C4FF;
+            color: #00b894;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #00b894;
             border-radius: 5px;
             cursor: pointer;
             font-weight: 500;
-            font-size: 0.9rem;
             transition: all 0.3s;
         }
 
         .register-btn:hover {
-            background: #00C4FF;
+            background: #00b894;
             color: white;
         }
 
         /* Main Content */
         main {
-            padding: 2.5rem 0;
+            padding: 2rem 0;
         }
 
         /* Hero Grid */
@@ -107,63 +104,33 @@
 
         .hero-main {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .hero-main:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .hero-main img {
             width: 100%;
-            height: 280px;
+            height: 250px;
             object-fit: cover;
         }
 
-        .hero-content {
-            padding: 1.8rem;
-        }
-
-        .hero-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            color: #333;
-            line-height: 1.4;
-        }
-
-        .hero-description {
-            color: #666;
-            margin-bottom: 1.2rem;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .hero-meta {
+        .hero-main .content {
+            padding: 1.5rem;
+            flex: 1;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
+            flex-direction: column;
         }
 
-        .tag {
-            background: #E8F7FF;
-            color: #00C4FF;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-weight: 500;
-        }
-
-        .date {
-            color: #999;
-            font-weight: 400;
-        }
-
-        /* Side Cards */
         .hero-side {
             display: flex;
             flex-direction: column;
@@ -172,111 +139,107 @@
 
         .side-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
-            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .side-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .side-card img {
             width: 100%;
-            height: 140px;
+            height: 120px;
             object-fit: cover;
         }
 
-        .side-content {
-            padding: 1.3rem;
-            height: calc(100% - 140px);
+        .side-card .content {
+            padding: 1rem;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        .side-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-            color: #333;
-            line-height: 1.3;
-        }
-
-        .side-description {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            flex-grow: 1;
-        }
-
-        .side-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-        }
-
-        /* Right Column */
         .hero-right {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .hero-right:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .hero-right img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
 
-        .right-content {
+        .hero-right .content {
             padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        .right-title {
+        .card-title {
             font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             color: #333;
-            line-height: 1.3;
+            flex-grow: 1;
         }
 
-        .right-description {
+        .card-description {
             color: #666;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             font-size: 0.9rem;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        .right-meta {
+        .card-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            margin-top: auto;
+        }
+
+        .tag {
+            background: #e8f8ff;
+            color: #00C4FF;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .date {
+            color: #999;
         }
 
         /* Popular Section */
         .popular-section {
-            margin: 4rem 0;
+            margin: 3rem 0;
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 2rem;
-            font-weight: 600;
             text-align: left;
+            color: #333;
         }
 
         .section-title .highlight {
@@ -291,22 +254,23 @@
 
         .popular-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
-            gap: 1rem;
+            flex-direction: row;
+            height: 140px;
         }
 
         .popular-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .popular-card img {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100%;
             object-fit: cover;
             flex-shrink: 0;
         }
@@ -317,29 +281,21 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background: white;
         }
 
         .popular-title {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: #333;
-            line-height: 1.3;
         }
 
         .popular-desc {
             font-size: 0.8rem;
             color: #666;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             line-height: 1.4;
-            flex-grow: 1;
-        }
-
-        .popular-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.75rem;
         }
 
         /* Footer */
@@ -347,7 +303,7 @@
             background: #1E463C;
             color: white;
             padding: 3rem 0 1rem;
-            margin-top: 4rem;
+            margin-top: 3rem;
         }
 
         .footer-content {
@@ -375,7 +331,6 @@
             color: #ecf0f1;
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 0.9rem;
         }
 
         .footer-section ul li a:hover {
@@ -389,39 +344,28 @@
             margin-bottom: 1rem;
         }
 
-        .footer-logo img {
+        .footer-logo .logo {
             height: 30px;
-            width: auto;
         }
 
-        .footer-flag {
-            width: 24px;
-            height: 16px;
-        }
-
-        .footer-desc {
-            color: #ecf0f1;
-            font-size: 0.9rem;
-            line-height: 1.5;
+        .footer-logo .flag {
+            width: 20px;
+            height: auto;
         }
 
         /* Responsive */
         @media (max-width: 992px) {
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1rem;
             }
             
             .hero-side {
-                flex-direction: row;
-                gap: 1.5rem;
+                grid-template-columns: 1fr 1fr;
+                display: grid;
             }
             
             .popular-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -432,7 +376,8 @@
             }
             
             .hero-side {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                display: flex;
             }
             
             .popular-grid {
@@ -440,14 +385,21 @@
             }
             
             .popular-card {
+                height: auto;
                 flex-direction: column;
             }
             
             .popular-card img {
                 width: 100%;
-                height: 160px;
+                height: 120px;
             }
             
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -473,29 +425,24 @@
 
     <main class="container">
         <section class="hero-grid">
-            <!-- Main Card -->
             <div class="hero-main">
                 <img src="img1.png" alt="COVID-19 Vaccines">
-                <div class="hero-content">
-                    <h2 class="hero-title">Perlukah Kita Mendapatkan Dosis Ketiga Vaksin COVID-19?</h2>
-                    <p class="hero-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C) atau memiliki tekanan darah diatas 140/90 mmHg</p>
-                    <div class="hero-meta">
+                <div class="content">
+                    <h2 class="card-title">Perlukah Kita Mendapatkan Dosis Ketiga Vaksin COVID-19?</h2>
+                    <p class="card-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C) atau memiliki tekanan darah diatas 140/90 mmHg</p>
+                    <div class="card-meta">
                         <span class="tag">#Vaksin Booster</span>
                         <span class="date">5 April 2025</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Side Cards -->
             <div class="hero-side">
                 <div class="side-card">
-                    <img src="img3.png" alt="Vaccine Types">
-                    <div class="side-content">
-                        <div>
-                            <h3 class="side-title">Simak Jenis Dan Ketentuan Vaksin Booster</h3>
-                            <p class="side-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="side-meta">
+                    <div class="content">
+                        <h3 class="card-title">Simak Jenis Dan Ketentuan Vaksin Booster</h3>
+                        <p class="card-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Vaksin Booster</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -503,13 +450,10 @@
                 </div>
 
                 <div class="side-card">
-                    <img src="img3.png" alt="COVID-19 Importance">
-                    <div class="side-content">
-                        <div>
-                            <h3 class="side-title">Seberapa Pentingkah Vaksin COVID-19</h3>
-                            <p class="side-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C) atau memiliki tekanan darah diatas 140/90 mmHg</p>
-                        </div>
-                        <div class="side-meta">
+                    <div class="content">
+                        <h3 class="card-title">Seberapa Pentingkah Vaksin COVID-19</h3>
+                        <p class="card-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C) atau memiliki tekanan darah diatas 140/90 mmHg</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -517,13 +461,12 @@
                 </div>
             </div>
 
-            <!-- Right Column -->
             <div class="hero-right">
                 <img src="img2.png" alt="Vaccine Side Effects">
-                <div class="right-content">
-                    <h3 class="right-title">Efek Samping Vaksin COVID-19</h3>
-                    <p class="right-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                    <div class="right-meta">
+                <div class="content">
+                    <h2 class="card-title">Efek Samping Vaksin COVID-19</h2>
+                    <p class="card-description">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                    <div class="card-meta">
                         <span class="tag">#Edukasi</span>
                         <span class="date">5 April 2025</span>
                     </div>
@@ -537,11 +480,9 @@
                 <div class="popular-card">
                     <img src="img4.png" alt="Vaccine Side Effects">
                     <div class="popular-content">
-                        <div>
-                            <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
-                            <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="popular-meta">
+                        <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
+                        <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -551,11 +492,9 @@
                 <div class="popular-card">
                     <img src="img4.png" alt="Vaccine Side Effects">
                     <div class="popular-content">
-                        <div>
-                            <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
-                            <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="popular-meta">
+                        <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
+                        <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -565,11 +504,9 @@
                 <div class="popular-card">
                     <img src="img4.png" alt="Vaccine Side Effects">
                     <div class="popular-content">
-                        <div>
-                            <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
-                            <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="popular-meta">
+                        <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
+                        <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -579,11 +516,9 @@
                 <div class="popular-card">
                     <img src="img4.png" alt="Vaccine Side Effects">
                     <div class="popular-content">
-                        <div>
-                            <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
-                            <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="popular-meta">
+                        <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
+                        <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -593,11 +528,9 @@
                 <div class="popular-card">
                     <img src="img4.png" alt="Vaccine Side Effects">
                     <div class="popular-content">
-                        <div>
-                            <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
-                            <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="popular-meta">
+                        <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
+                        <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -607,11 +540,9 @@
                 <div class="popular-card">
                     <img src="img4.png" alt="Vaccine Side Effects">
                     <div class="popular-content">
-                        <div>
-                            <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
-                            <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
-                        </div>
-                        <div class="popular-meta">
+                        <h3 class="popular-title">Efek Samping Vaksin COVID-19</h3>
+                        <p class="popular-desc">Pemberian Vaksin akan ditunda jika Anda sedang demam (suhu tubuh > 37.5 C)</p>
+                        <div class="card-meta">
                             <span class="tag">#Edukasi</span>
                             <span class="date">5 April 2025</span>
                         </div>
@@ -626,10 +557,10 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="img6.png" alt="Vacsin Logo">
-                        <img src="indo.png" alt="Indonesia Flag" class="footer-flag">
+                        <img src="img6.png" alt="Vacsin Logo" class="logo">
+                        <img src="indo.png" alt="Indonesia Flag" class="flag">
                     </div>
-                    <p class="footer-desc">Vacsin adalah platform edukasi vaksinasi</p>
+                    <p>Vacsin adalah platform edukasi vaksinasi</p>
                 </div>
                 <div class="footer-section">
                     <h3>Perusahaan</h3>
@@ -660,17 +591,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+            // Register button functionality
+            document.querySelector('.register-btn').addEventListener('click', function() {
+                alert('Fitur registrasi akan segera tersedia!');
             });
 
             // Add loading animation to cards
@@ -689,11 +612,6 @@
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
-            });
-
-            // Register button functionality
-            document.querySelector('.register-btn').addEventListener('click', function() {
-                alert('Fitur registrasi akan segera tersedia!');
             });
         });
     </script>
