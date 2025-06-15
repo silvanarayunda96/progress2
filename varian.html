@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacsin - Platform Edukasi Vaksinasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc8 50%, #f1f8e9 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #0066cc;
+        }
+
+        .nav-menu a.active {
+            color: #00cc66;
+        }
+
+        .register-btn {
+            background: transparent;
+            color: #0066cc;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #0066cc;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #0066cc;
+            color: white;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 100px auto 0;
+            padding: 2rem;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero Section - Grid Layout */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 2fr 1fr;
+            gap: 2rem;
+            height: 600px;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        /* Rectangle 31 Background Gradients */
+        .hero-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2) 0%, rgba(255, 184, 77, 0.2) 100%);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        /* Left Side - Main Content */
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            grid-row: span 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .company-name {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: #000;
+            letter-spacing: -2px;
+        }
+
+        .hero-title .vac {
+            color: #e74c3c;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .efficacy-section {
+            margin-top: auto;
+        }
+
+        .efficacy-label {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .efficacy-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #000;
+        }
+
+        /* Right Side - Images with Rectangle 17 backgrounds */
+        .hero-image-top {
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image-top::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3) 0%, rgba(255, 184, 77, 0.3) 100%);
+            border-radius: 15px;
+        }
+
+        .hero-image-top::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: url('Sinovac3 1.png') center/cover;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+
+        .hero-image-bottom {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-image-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3) 0%, rgba(255, 184, 77, 0.3) 100%);
+            border-radius: 15px;
+        }
+
+        .hero-image-bottom::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: url('Sinovac2 1.png') center/cover;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+
+        /* Important Info Section */
+        .important-info {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .important-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(168, 230, 207, 0.3) 0%, rgba(220, 237, 200, 0.3) 100%);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .info-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .info-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Kandungan Section */
+        .kandungan-section {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .kandungan-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(168, 230, 207, 0.2) 0%, rgba(220, 237, 200, 0.2) 100%);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .kandungan-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+        }
+
+        .kandungan-header {
+            margin-bottom: 3rem;
+        }
+
+        .kandungan-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .kandungan-subtitle {
+            font-size: 1.1rem;
+            color: #00cc66;
+            font-weight: 600;
+        }
+
+        .kandungan-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .kandungan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .kandungan-item {
+            background: rgba(248, 249, 250, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #00cc66;
+            transition: transform 0.3s;
+        }
+
+        .kandungan-item:hover {
+            transform: translateX(5px);
+        }
+
+        .kandungan-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #00cc66;
+        }
+
+        .kandungan-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .kandungan-item p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .kandungan-image {
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 204, 102, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kandungan-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('image (3).png') center/cover;
+            opacity: 0.9;
+        }
+
+        /* Efek Samping Section */
+        .efek-samping {
+            margin-bottom: 4rem;
+        }
+
+        .efek-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .efek-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .efek-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+
+        .efek-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .efek-item {
+            background: rgba(0, 204, 102, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #00cc66;
+        }
+
+        .efek-item:hover {
+            background: rgba(0, 204, 102, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 204, 102, 0.3);
+        }
+
+        .efek-item h4 {
+            color: #00cc66;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a2332;
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .footer-logo .flag {
+            width: 30px;
+            height: 20px;
+            background: url('indo.png') center/cover;
+            border-radius: 3px;
+        }
+
+        .footer-description {
+            color: #bdc3c7;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #0066cc;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #00cc66;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-grid {
+                height: auto;
+                grid-template-rows: auto auto;
+            }
+            
+            .kandungan-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .kandungan-image {
+                margin: 0 auto;
+            }
+
+            .info-header {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kandungan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .efek-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .main-container {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .efek-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="app Name.png" alt="Vacsin Logo">
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#varian" class="active">Varian</a></li>
+                    <li><a href="#edukasi">Edukasi</a></li>
+                    <li><a href="#lokasi">Lokasi Vaksin</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+            <a href="#register" class="register-btn">Registrasi</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-grid" id="home">
+            <div class="hero-content">
+                <div class="company-name">Sinovac Biotech Ltd</div>
+                <h1 class="hero-title">SINO<span class="vac">VAC</span></h1>
+                <p class="hero-description">
+                    Vaksin Sinovac adalah vaksin untuk mencegah infeksi virus SARS-CoV-2 atau COVID-19. Vaksin Sinovac yang 
+                    dikenal juga dengan nama Coronavac sudah mendapat izin penggunaan darurat dari Badan Pengawas Obat dan 
+                    Makanan (BPOM RI).
+                </p>
+                <div class="efficacy-section">
+                    <div class="efficacy-label">Efikasi</div>
+                    <div class="efficacy-number">91.55%</div>
+                </div>
+            </div>
+            <div class="hero-image-top"></div>
+            <div class="hero-image-bottom"></div>
+        </section>
+
+        <!-- Important Info Section -->
+        <section class="important-info">
+            <div class="info-header">
+                <div>
+                    <h2 class="section-title">Hal Yang Diperhatikan Sebelum Vaksin Sinovac</h2>
+                </div>
+                <div>
+                    <p class="section-subtitle">Vaksin Sinovac adalah vaksin untuk mencegah infeksi virus SARS-CoV-2 atau COVID-19. Vaksin Sinovac yang dikenal juga dengan nama CoronaVac</p>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Umur 18-59</h3>
+                    <p>Vaksin Sinovac dapat diberikan pada orang berusia 18-59 tahun yang sedang dalam kondisi sehat.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Suhu Tubuh</h3>
+                    <p>Vaksin Sinovac tidak boleh diberikan pada penderita HIV yang memiliki nilai CD4 dibawah 200 atau yang nilai CD4 nya tidak diketahui.</p>
+                </div>
+                <div class="info-card">
+                    <h3>HIV ?</h3>
+                    <p>Vaksin Sinovac dapat diberikan pada orang berusia 18-59 tahun yang sedang dalam kondisi sehat.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Alergi</h3>
+                    <p>Vaksin Sinovac tidak boleh diberikan kepada orang yang alergi terhadap kandungan di dalam vaksin ini.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Penyakit Paru</h3>
+                    <p>Pemberian Vaksin pada penderita penyakit paru-paru, seperti asma, PPOK, atau TBC, akan ditunda sampai kondisinya terkontrol</p>
+                </div>
+                <div class="info-card">
+                    <h3>Ibu Hamil</h3>
+                    <p>Untuk Ibu hamil pemberiannya dapat dimulai pada usia kehamilan di atas 12 minggu</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kandungan Section -->
+        <section class="kandungan-section">
+            <div class="kandungan-container">
+                <div class="kandungan-header">
+                    <h2 class="kandungan-title">Kandungan Vaksin Sinovac</h2>
+                    <p class="kandungan-subtitle">4 Kandungan Vaksin Sinovac</p>
+                </div>
+                <div class="kandungan-content">
+                    <div class="kandungan-grid">
+                        <div class="kandungan-item">
+                            <div class="kandungan-number">1</div>
+                            <h3>Virus Yang Telah Dimatikan</h3>
+                            <p>Artinya virus yang ada dalam vaksin sudah dimatikan dan tidak mengandung virus hidup atau yang dilemahkan</p>
+                        </div>
+                        <div class="kandungan-item">
+                            <div class="kandungan-number">2</div>
+                            <h3>Larutan Garam atau Natrium Chlorida</h3>
+                            <p>Sebagai isotonis guna memberikan kenyamanan dalam penyuntikan Natrium klorida yang digunakan dalam vaksin sesuai dengan standar</p>
+                        </div>
+                        <div class="kandungan-item">
+                            <div class="kandungan-number">3</div>
+                            <h3>Aluminium Hidroksida</h3>
+                            <p>Berfungsi meningkatkan kemampuan vaksin.</p>
+                        </div>
+                        <div class="kandungan-item">
+                            <div class="kandungan-number">4</div>
+                            <h3>Larutan Fosfat</h3>
+                            <p>Berfungsi sebagai stabilizer</p>
+                        </div>
+                    </div>
+                    <div class="kandungan-image"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Efek Samping Section -->
+        <section class="efek-samping">
+            <div class="efek-container">
+                <h2 class="efek-title">Efek Samping</h2>
+                <p class="efek-subtitle">Ketahuilah beberapa efek samping yang bisa terjadi setelah menerima vaksin Sinovac</p>
+                <div class="efek-grid">
+                    <div class="efek-item">
+                        <h4>Demam</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Menggigil</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Mual atau Muntah</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Nyeri Otot</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Terasa Lelah</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Sakit Kepala</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Nyeri Sendi</h4>
+                    </div>
+                    <div class="efek-item">
+                        <h4>Kemerahan Bekas Suntik</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="app Name.png" alt="Vacsin Logo">
+                        <div class="flag"></div>
+                    </div>
+                    <p class="footer-description">Vacsin adalah platform edukasi vaksinasi</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="#tentang">Tentang</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#edukasi">Edukasi</a></li>
+                        <li><a href="#varian">Varian</a></li>
+                        <li><a href="#vaksin">Vaksin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kebijakan</h4>
+                    <ul>
+                        <li><a href="#syarat">Syarat & Ketentuan</a></li>
+                        <li><a href="#privasi">Kebijakan Privasi</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.info-card, .kandungan-item, .efek-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.
