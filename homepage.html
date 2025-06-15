@@ -3,46 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacsin - Program Pemerintah Vaksin COVID-19</title>
-    <link rel="stylesheet" href="homepage.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Vacsin - Program Vaksinasi COVID-19</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fffe;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 40px;
+            background: url('App Name.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #4a9b8e;
+        }
+
+        .register-btn {
+            border: 2px solid #4a9b8e;
+            color: #4a9b8e;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #4a9b8e;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: url('Rectangle 15.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(248, 255, 254, 0.9) 0%, rgba(232, 245, 243, 0.9) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            background: #4a9b8e;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background: #3a8b7e;
+        }
+
+        .hero-images {
+            position: relative;
+            height: 400px;
+        }
+
+        .hero-img-1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 200px;
+            background: url('image.png') no-repeat center;
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-img-2 {
+            position: absolute;
+            top: 120px;
+            right: 0;
+            width: 280px;
+            height: 200px;
+            background: url('image (1).png') no-repeat center;
+            background-size: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        /* Statistics */
+        .stats {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Partners */
+        .partners {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            height: 60px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .partner-logo.germas {
+            background-image: url('daffd469germas-removebg-preview 1 (1).png');
+        }
+
+        .partner-logo.kemenkes {
+            background-image: url('Logo_of_the_Ministry_of_Health_of_the_Republic_of_Indonesia 1 (1).png');
+        }
+
+        .partner-logo.pmi {
+            background-image: url('sejarah-pmi-mengenal-sejarah-palang-merah-di-indonesia_169-removebg-preview 1 (1).png');
+        }
+
+        .partner-logo.who {
+            background-image: url('world-health-organization-who-misi-dan-peran-dalam-menjaga-kesehatan-dunia-750x320-removebg-preview 1 (1).png');
+        }
+
+        .partner-logo.kpc {
+            background-image: url('images__1_-removebg-preview 1 (2).png');
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .faq-image {
+            width: 100%;
+            height: 400px;
+            background: url('image 2.png') no-repeat center;
+            background-size: cover;
+            border-radius: 15px;
+        }
+
+        .faq-text h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .faq-text p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .faq-list {
+            list-style: none;
+        }
+
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: #f9f9f9;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+
+        /* Rules Section */
+        .rules {
+            padding: 80px 0;
+            background: url('Rectangle 18.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .rules::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(232, 244, 253, 0.9) 0%, rgba(240, 249, 255, 0.9) 100%);
+        }
+
+        .rules h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .rule-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .rule-item:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .rule-item:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .rule-item:nth-child(3) {
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .rule-item:nth-child(4) {
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        .rule-item h3 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .rule-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Vaccine Variants */
+        .variants {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .variants h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .variants p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .variant-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .variant-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .variant-logo.astrazeneca {
+            background-image: url('AstraZen-removebg-preview 1.png');
+        }
+
+        .variant-logo.sinovac {
+            background-image: url('Sinovac1 1.png');
+        }
+
+        .variant-logo.moderna {
+            background-image: url('Moderna-Logo-removebg-preview 1.png');
+        }
+
+        .variant-card p {
+            color: #666;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .variant-btn {
+            background: #4a9b8e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: url('Rectangle 19.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(248, 255, 254, 0.9) 0%, rgba(232, 245, 243, 0.9) 100%);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .testimonial-avatar.steve {
+            background-image: url('dumyfoto2 1.png');
+        }
+
+        .testimonial-avatar.clara {
+            background-image: url('dumyfoto 3.png');
+        }
+
+        .testimonial-card h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-card .position {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-brand-logos {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: 40px;
+            background: url('App Name.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .footer-logo-flag {
+            width: 40px;
+            height: 30px;
+            background: url('indo.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .footer-brand p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #4a9b8e;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            color: #bbb;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-images {
+                height: 300px;
+                margin-top: 40px;
+            }
+
+            .hero-img-1, .hero-img-2 {
+                width: 200px;
+                height: 150px;
+            }
+
+            .hero-img-2 {
+                top: 80px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .faq-content {
+                grid-template-columns: 1fr;
+            }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>V<span>acsin</span></h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#" class="nav-link active">Home</a></li>
-                <li><a href="#" class="nav-link">Varian</a></li>
-                <li><a href="#" class="nav-link">Edukasi</a></li>
-                <li><a href="#" class="nav-link">Lokasi Vaksin</a></li>
-                <li><a href="#" class="nav-link">Kontak</a></li>
-                <li><a href="#" class="nav-link register-btn">Registrasi</a></li>
-            </ul>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo-container">
+                    <div class="logo"></div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#varian">Varian</a></li>
+                    <li><a href="#edukasi">Edukasi</a></li>
+                    <li><a href="#lokasi">Lokasi Vaksin</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+                <a href="#" class="register-btn">Registrasi</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
+    <section class="hero" id="home">
+        <div class="container">
             <div class="hero-content">
-                <h1>Ayo Ikuti Program Pemerintah Vaksin COVID-19.</h1>
-                <p>Vaksin penting untuk menjaga kesehatan diri dan keluarga. Pmerintah menjamin vaksin yang digunakan sesuai dengan standar keamanan dan melewati uji klinik yang ketat</p>
-                <button class="cta-button">Vaksin Sekarang</button>
-            </div>
-            <div class="hero-image">
-                <div class="placeholder-image"></div>
+                <div class="hero-text">
+                    <h1>Ayo Ikuti Program Pemerintah Vaksin COVID-19.</h1>
+                    <p>Vaksin penting untuk menjaga kesehatan diri dan keluarga. Pemerintah menjamin vaksin yang digunakan sesuai dengan standar keamanan dan melewati uji klinik yang ketat.</p>
+                    <a href="#" class="cta-btn">Vaksin Sekarang</a>
+                </div>
+                <div class="hero-images">
+                    <div class="hero-img-1"></div>
+                    <div class="hero-img-2"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Statistics Section -->
-    <section class="statistics">
+    <!-- Statistics -->
+    <section class="stats">
         <div class="container">
-            <h2>Total Vaksinasi Yang Telah Dilakukan</h2>
             <div class="stats-grid">
                 <div class="stat-item">
                     <h3>91.55%</h3>
@@ -60,70 +714,53 @@
         </div>
     </section>
 
-    <!-- Partner Logos -->
+    <!-- Partners -->
     <section class="partners">
         <div class="container">
-            <div class="partner-logos">
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/120x60/333/fff?text=GERMAS" alt="GERMAS">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/120x60/333/fff?text=KEMENKES" alt="Kementerian Kesehatan">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/120x60/333/fff?text=PMI" alt="Palang Merah Indonesia">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/120x60/333/fff?text=WHO" alt="World Health Organization">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/120x60/333/fff?text=KPC+PEN" alt="KPC PEN">
-                </div>
+            <div class="partners-grid">
+                <div class="partner-logo germas"></div>
+                <div class="partner-logo kemenkes"></div>
+                <div class="partner-logo pmi"></div>
+                <div class="partner-logo who"></div>
+                <div class="partner-logo kpc"></div>
             </div>
         </div>
     </section>
 
-    <!-- Why Vaccine Section -->
-    <section class="why-vaccine">
+    <!-- FAQ Section -->
+    <section class="faq">
         <div class="container">
-            <div class="why-content">
-                <div class="why-image">
-                    <img src="https://via.placeholder.com/400x400/4a9b8e/fff?text=Vaksin+Image" alt="Why Vaccine">
-                </div>
-                <div class="why-text">
+            <div class="faq-content">
+                <div class="faq-image"></div>
+                <div class="faq-text">
                     <h2>Mengapa saya harus vaksin?</h2>
-                    <p>Jk melawar hoax yang beredar di sosial media, pemerintah memberikan edukasi gan memberikan empat manfaat dari vaksinasi Covid-19. Berikut diantaranya:</p>
-                    
-                    <div class="accordion">
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <span>01</span>
-                                <h3>Merangsang Sistem Kekebalan Tubuh</h3>
-                                <i class="fas fa-plus"></i>
+                    <p>Dengan melakukan vaksin, anda berpartisipasi dalam upaya membangun kekebalan komunal dan melindungi orang lain dari Covid-19. Berikut alasannya:</p>
+                    <ul class="faq-list">
+                        <li class="faq-item">
+                            <div class="faq-question">
+                                01. Merangsang Sistem Kekebalan Tubuh
+                                <span>+</span>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <span>02</span>
-                                <h3>Mengurangi Risiko Penularan</h3>
-                                <i class="fas fa-plus"></i>
+                        </li>
+                        <li class="faq-item">
+                            <div class="faq-question">
+                                02. Mengurangi Risiko Penularan
+                                <span>+</span>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <span>03</span>
-                                <h3>Mengurangi Dampak Berat Dari Virus</h3>
-                                <i class="fas fa-plus"></i>
+                        </li>
+                        <li class="faq-item">
+                            <div class="faq-question">
+                                03. Mengurangi Dampak Berat Dari Virus
+                                <span>+</span>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <span>04</span>
-                                <h3>Mencapai Herd Immunity</h3>
-                                <i class="fas fa-plus"></i>
+                        </li>
+                        <li class="faq-item">
+                            <div class="faq-question">
+                                04. Mencapai Herd Immunity
+                                <span>+</span>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -132,101 +769,74 @@
     <!-- Rules Section -->
     <section class="rules">
         <div class="container">
-            <div class="rules-content">
-                <div class="rules-text">
-                    <h2>Beberapa aturan yang harus dipatuhi pasien.</h2>
-                    <p>Agar tidak terjadi hal yang tidak diinginkan Ada beberapa syarat yang dipenuhi oleh penerima vaksin. Berikut syarat sebelum menerima vaksin</p>
+            <h2>Beberapa aturan yang harus dipatuhi pasien.</h2>
+            <div class="rules-grid">
+                <div class="rule-item">
+                    <h3>01. Tekanan Darah Harus Normal</h3>
+                    <p>Pastikan saat datang memeriksakan tekanan darah dalam batas 180/110, atau meminta nasihat kepada petugas tenaga medis yang bertugas sebelum disuntik vaksin.</p>
                 </div>
-                
-                <div class="rules-grid">
-                    <div class="rule-item">
-                        <h3><span>01</span> Tekanan Darah Harus Normal</h3>
-                        <p>Apabila saat skrining kesehatan kamu memiliki tekanan darah diatas 180/110, atau memiliki riwayat hipertensi artinya vaksinasi tidak dapat diberikan.</p>
-                    </div>
-                    <div class="rule-item">
-                        <h3><span>02</span> Hindari Alkohol</h3>
-                        <p>Hal ini penting dilakukan agar sistem imun Anda tetap kuat dan dapat menghasilkan reaksi kekebalan tubuh yang baik untuk mencegah infeksi virus Corona.</p>
-                    </div>
-                    <div class="rule-item">
-                        <h3><span>03</span> Tidur yang cukup</h3>
-                        <p>Beberapa hari sebelum disuntik vaksin COVID-19, usahakan untuk tidak begadang dan cukupi waktu istirahat dengan tidur selama 7–9 jam setiap malamnya.</p>
-                    </div>
-                    <div class="rule-item">
-                        <h3><span>04</span> Informasikan kondisi kesehatan diri</h3>
-                        <p>Beri tahu dokter atau petugas vaksinasi COVID-19 mengenai kondisi kesehatan Anda saat hendak divaksin, seperti: Demam, Penyakit tertentu, konsumsi obat-obatan tertentu.</p>
-                    </div>
+                <div class="rule-item">
+                    <h3>02. Hindari Alkohol</h3>
+                    <p>Tidak dianjurkan konsumsi minuman keras karena dapat menurunkan sistem imun dan memperlambat proses penyembuhan dan mengganggu metabolisme tubuh yang dapat mengganggu efektivitas vaksin.</p>
+                </div>
+                <div class="rule-item">
+                    <h3>03. Tidur yang cukup</h3>
+                    <p>Sebaiknya tidur setidaknya delapan jam setiap malam untuk memelihara kekebalan tubuh, sehingga tubuh dapat melawan penyakit dan infeksi dengan optimal.</p>
+                </div>
+                <div class="rule-item">
+                    <h3>04. Informasikan kondisi kesehatan dini</h3>
+                    <p>Beri tahu dokter atau petugas vaksinasi Covid-19 mengenai kondisi kesehatan Anda saat hendak divaksin. Terutama bagi penderita konsumsi obat-obatan tertentu.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Vaccine Variants Section -->
-    <section class="variants">
+    <!-- Vaccine Variants -->
+    <section class="variants" id="varian">
         <div class="container">
             <h2>Varian Vaksin</h2>
-            <p class="section-subtitle">Sebelum divaksin, ada baiknya ketahui sendiri vaksin dan keuntungan menggunakannya</p>
-            
+            <p>Sebelum divaksin, ada baiknya ketahui<br>sendiri vaksin dan keuntungan<br>menggunakannya.</p>
             <div class="variants-grid">
                 <div class="variant-card">
-                    <div class="variant-logo astrazeneca">
-                        <img src="https://via.placeholder.com/200x60/f4a261/fff?text=AstraZeneca" alt="AstraZeneca">
-                    </div>
-                    <p>Vaksin Sinovac menggunakan virus tidak aktif (inactive virus. Jaarak pemberian vaksin...</p>
-                    <button class="read-more-btn">Baca Selengkapnya</button>
+                    <div class="variant-logo astrazeneca"></div>
+                    <p>Vaksin AstraZeneca menggunakan virus hidup yang tidak aktif (inactive virus). Jenis pemberian vaksin.</p>
+                    <a href="#" class="variant-btn">Baca Selengkapnya</a>
                 </div>
                 <div class="variant-card">
-                    <div class="variant-logo sinovac">
-                        <img src="https://via.placeholder.com/200x60/e63946/fff?text=SINOVAC" alt="Sinovac">
-                    </div>
-                    <p>Vaksin Sinovac menggunakan virus tidak aktif (inactive virus. Jaarak pemberian vaksin...</p>
-                    <button class="read-more-btn">Baca Selengkapnya</button>
+                    <div class="variant-logo sinovac"></div>
+                    <p>Vaksin Sinovac menggunakan virus hidup yang tidak aktif (inactive virus). Jenis pemberian vaksin.</p>
+                    <a href="#" class="variant-btn">Baca Selengkapnya</a>
                 </div>
                 <div class="variant-card">
-                    <div class="variant-logo moderna">
-                        <img src="https://via.placeholder.com/200x60/2a9d8f/fff?text=moderna" alt="Moderna">
-                    </div>
-                    <p>Vaksin Sinovac menggunakan virus tidak aktif (inactive virus...</p>
-                    <button class="read-more-btn">Baca Selengkapnya</button>
+                    <div class="variant-logo moderna"></div>
+                    <p>Vaksin Moderna menggunakan virus hidup yang tidak aktif (inactive virus). Jenis pemberian vaksin.</p>
+                    <a href="#" class="variant-btn">Baca Selengkapnya</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
             <h2>Testimoni</h2>
-            <p class="section-subtitle">Kata mereka yang telah melakukan vaksinasi dari program pemerintah</p>
-            
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/60x60/333/fff?text=SJ" alt="Steve John">
-                        <div class="testimonial-info">
-                            <h3>Steve John</h3>
-                            <p>Pegawai Swasta</p>
-                        </div>
-                    </div>
+                    <div class="testimonial-avatar steve"></div>
+                    <h4>Steve John</h4>
+                    <p class="position">Pegawai Swasta</p>
                     <p>"Sebelum divaksin sebaiknya ketahui sendiri vaksin dan keuntungan menggunakannya"</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/60x60/333/fff?text=CR" alt="Clara Ren">
-                        <div class="testimonial-info">
-                            <h3>Clara Ren</h3>
-                            <p>Pegawai Swasta</p>
-                        </div>
-                    </div>
+                    <div class="testimonial-avatar clara"></div>
+                    <h4>Clara Ren</h4>
+                    <p class="position">Pegawai Swasta</p>
                     <p>"Sebelum divaksin sebaiknya ketahui sendiri vaksin dan keuntungan menggunakannya"</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <img src="https://via.placeholder.com/60x60/333/fff?text=SJ" alt="Steve John">
-                        <div class="testimonial-info">
-                            <h3>Steve John</h3>
-                            <p>Pegawai Swasta</p>
-                        </div>
-                    </div>
+                    <div class="testimonial-avatar steve"></div>
+                    <h4>Steve John</h4>
+                    <p class="position">Pegawai Swasta</p>
                     <p>"Sebelum divaksin sebaiknya ketahui sendiri vaksin dan keuntungan menggunakannya"</p>
                 </div>
             </div>
@@ -237,18 +847,21 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>V<span>acsin</span> 🇮🇩</h3>
+                <div class="footer-brand">
+                    <div class="footer-brand-logos">
+                        <div class="footer-logo"></div>
+                        <div class="footer-logo-flag"></div>
+                    </div>
                     <p>Vacsin adalah platform edukasi vaksinasi</p>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h4>Perusahaan</h4>
                     <ul>
                         <li><a href="#">Tentang</a></li>
                         <li><a href="#">Kontak</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h4>Layanan</h4>
                     <ul>
                         <li><a href="#">Edukasi</a></li>
@@ -256,7 +869,7 @@
                         <li><a href="#">Vaksin</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h4>Kebijakan</h4>
                     <ul>
                         <li><a href="#">Syarat & Ketentuan</a></li>
@@ -265,9 +878,33 @@
                     </ul>
                 </div>
             </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vacsin. Semua hak dilindungi.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="homepage.js"></script>
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const icon = question.querySelector('span');
+                icon.textContent = icon.textContent === '+' ? '-' : '+';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
